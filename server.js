@@ -34,3 +34,18 @@ app.get("/api/usuarios",(req,res)=>{
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>console.log("Servidor rodando"))
+
+let notas = [
+ {aluno:"Miguel", materia:"Matemática", nota:9},
+ {aluno:"Miguel", materia:"Geografia", nota:8}
+]
+
+app.get("/api/notas/:nome",(req,res)=>{
+
+let nome = req.params.nome
+
+let resultado = notas.filter(n=>n.aluno===nome)
+
+res.json(resultado)
+
+})
